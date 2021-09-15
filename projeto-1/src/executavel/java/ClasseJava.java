@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
 public class ClasseJava {
 
 	public static void main(String[] args) {
-		/* new Aluno é uma isntância ou criação de um objeto */
+		/* new Aluno é uma isntância ou criação de um objeto. */
 		/* aluno1 é uma referência (variavél)para o objeto Aluno */
-		
+		/**/
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		
 		for (int qtd = 0; qtd <=1; qtd++) {
