@@ -88,7 +88,15 @@ public class ClasseJava {
 			}
 		}
 		
-		
+		for (Aluno aluno : alunos) {
+			System.out.println("Alunos que sobraram na lista");
+			System.out.println(aluno.getNome());
+			System.out.println("Suas máterias");
+			 
+			for (Disciplina disciplina : aluno.getDisciplinas()) {
+				System.out.println(disciplina.getDisciplina());
+			}
+		}
 		
 
 	}
