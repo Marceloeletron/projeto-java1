@@ -1,5 +1,6 @@
 package executavel.java;
 
+/*Herança - Classe Pai , Master ou Super classe. (Atributos comuns a todos os objetos filhos)*/
 public class Pessoa {
 	
 	protected String nome;
@@ -53,6 +54,9 @@ public class Pessoa {
 		this.nomePai = nomePai;
 	}
 	
-	
+	/*Retorna true se tiver acima de 18 anos , caso contrário false*/
+	public boolean pessoaMaiorIdade() {
+		return idade >= 18;
+	}
 
 }
