@@ -1,7 +1,7 @@
 package executavel.java;
 
 /*Herança - Classe Pai , Master ou Super classe. (Atributos comuns a todos os objetos filhos)*/
-public class Pessoa {
+public abstract class Pessoa {
 	
 	protected String nome;
 	protected int idade;
