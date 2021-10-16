@@ -16,9 +16,14 @@ public class ClasseJava {
 
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
+		
+		Secretario secretario = new Secretario();//Trabalho direto com objeto
 
-		if (login.equalsIgnoreCase("admin") && 
-				senha.equalsIgnoreCase("admin")) {
+		secretario.setLogin(login);
+		secretario.setSenha(senha);
+		
+		if(secretario.autenticar()) {//Se TRUE, acesa. Se FALSE não acessa
+
 
 			List<Aluno> alunos = new ArrayList<Aluno>();
 
@@ -124,6 +129,8 @@ public class ClasseJava {
 						+ " com média de = " + aluno.getMediaNota());
 			}
 
+		}else {
+			JOptionPane.showMessageDialog(null, "Acesso não permitido");
 		}
 
 	}

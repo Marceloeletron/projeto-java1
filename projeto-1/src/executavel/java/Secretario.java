@@ -1,10 +1,18 @@
 package executavel.java;
 
-public class Secretario extends Pessoa {
+import interfaces.PermitirAcesso;
+
+public class Secretario extends Pessoa implements PermitirAcesso {
 	
 	private String registro;
 	private String nivelCargo;
 	private String experiencia;
+	
+	//criando login e senha secretário
+	private String login;
+	private String senha;
+	
+	
 	
 	public String getRegistro() {
 		return registro;
@@ -35,7 +43,24 @@ public class Secretario extends Pessoa {
 		
 		return 1980 * 0.9;
 	}
+	//Esse é o método de contrato de autenticação
+	@Override
+	public boolean autenticar() {
+		
+		return login.equals("admin") && senha.equals("admin");//Retorna sim , caso login e senha sejam admin. se não false.
+	}
 	
-	
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 }
