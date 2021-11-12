@@ -1,11 +1,15 @@
 package executavel.java;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import excecao.ExcecaoProcessarNota;
+import executavel.classesauxiliares.FuncaoAutenticacao;
 import projeto.java.constantes.StatusAluno;
 
 public class ClasseJava {
@@ -14,15 +18,20 @@ public class ClasseJava {
 		/* new Aluno é uma isntância ou criação de um objeto. */
 		/* aluno1 é uma referência (variavél)para o objeto Aluno */
 
+		try {
+			
+			lerArquivo();
+			
+			
+			
 		String login = JOptionPane.showInputDialog("Informe o login");
 		String senha = JOptionPane.showInputDialog("Informe a senha");
 		
-		Secretario secretario = new Secretario();//Trabalho direto com objeto
-
-		secretario.setLogin(login);
-		secretario.setSenha(senha);
 		
-		if(secretario.autenticar()) {//Se TRUE, acesa. Se FALSE não acessa
+		
+		
+		
+		if(new FuncaoAutenticacao(new Diretor(login,senha)).autenticar()) {//Só poderá ter acesso ao contrato quem for 100% legitimo
 
 
 			List<Aluno> alunos = new ArrayList<Aluno>();
@@ -33,12 +42,13 @@ public class ClasseJava {
 			 */
 			HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 
-			for (int qtd = 1; qtd <= 3; qtd++) {
+			for (int qtd = 1; qtd <= 1; qtd++) {
 
 				/* Entrada de dados */
 				String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + "?");
-				/*
-				 * String idade = JOptionPane.showInputDialog("Qual a idade?"); String
+				
+				  String idade = JOptionPane.showInputDialog("Qual a idade?"); 
+				  /*
 				 * dataNascimento = JOptionPane.showInputDialog("Data de nascimento?"); String
 				 * RG = JOptionPane.showInputDialog("RG do aluno?"); String CPF =
 				 * JOptionPane.showInputDialog("CPF do aluno?"); String Mae =
@@ -51,8 +61,9 @@ public class ClasseJava {
 
 				Aluno aluno1 = new Aluno();
 				aluno1.setNome(nome);
+				aluno1.setIdade(Integer.valueOf(idade));
+				  
 				/*
-				 * aluno1.setIdade(Integer.valueOf(22));
 				 * aluno1.setDataNascimento(dataNascimento); aluno1.setRegistroGeral(RG);
 				 * aluno1.setNumeroCpf(CPF); aluno1.setNomeMae(Mae); aluno1.setNomePai(pai);
 				 * aluno1.setEndereço(endereço); aluno1.setNomeEscola(escola);
@@ -132,7 +143,42 @@ public class ClasseJava {
 		}else {
 			JOptionPane.showMessageDialog(null, "Acesso não permitido");
 		}
+		/**/
+		} catch (Exception e) {
+			StringBuilder saida = new StringBuilder();
+			
+			e.printStackTrace(); /*Imprime erro no console*/
+			
+			/*Mensagem de erro ou causa*/
+			System.out.println("Mensagem " + e.getMessage());
+			
+			for (int pos = 0; pos < e.getStackTrace().length; pos++) {
+				
+				saida.append("\n Classe de erro " + e.getStackTrace()[pos].getClassName());
+				saida.append("\n Método de erro " + e.getStackTrace()[pos].getMethodName());
+				saida.append("\n Linha de erro " + e.getClass().getName());
+
+
+			}
+			
+			JOptionPane.showMessageDialog(null, "Erro de conversão de número " + saida.toString());
+		}
+		finally {/*sempre é executado ocorrendo erros ou não. 
+			Finally é usado sempre quando se precisa executar um processo no sistema dando erro ou não*/
+			JOptionPane.showInternalMessageDialog(null, "Vc ainda está aprendendo java.");
+		}
 
 	}
+
+	public static void lerArquivo () throws  FileNotFoundException {
+		
+		
+		
+		File fil = new File("c://lines.txt");
+		java.util.Scanner scanner = new java.util.Scanner(fil);
+		
+		
+	}
+
 
 }
